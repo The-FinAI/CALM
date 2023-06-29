@@ -17,7 +17,7 @@ mean_list = ['Status of existing checking account', 'Duration in month', 'Credit
              'Credit amount', 'Savings account/bonds', 'Present employment since',
              'Installment rate in percentage of disposable income', 'Personal status and sex',
              ' Other debtors / guarantors', 'Present residence since', 'Property', 'Age in years',
-             'Other installment plans', 'Housing', 'Number of existing credits at this bank' ,'Job'
+             'Other installment plans', 'Housing', 'Number of existing credits at this bank' ,'Job',
              'Number of people being liable to provide maintenance for' , 'Telephone' , 'foreign worker'
              ]
 
