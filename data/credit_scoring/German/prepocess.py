@@ -89,7 +89,7 @@ def process(data, mean_list, dict):
             else:
                 text = text+ '. '+ 'The state of ' + mean_list[i] + ' is ' + dict[str(i)][data[j][i]]
             label = 'good' if data[j][-1] == 1 else 'bad'
-        data_tmp.append({'text':text, 'label':label})
+        data_tmp.append({'id':j ,'text':text, 'label':label})
     return data_tmp
 
 def json_save(data, dataname, mean_list= mean_list, dict= dict):
@@ -97,8 +97,10 @@ def json_save(data, dataname, mean_list= mean_list, dict= dict):
     with open('{}.jsonl'.format(dataname),'w') as f:
         for i in data_tmp:
             json.dump(i, f)
+            f.write('\n')
         print('-----------')
         print("write done")
+    f.close()
     return None
 
 #####process
