@@ -81,16 +81,16 @@ dict = {'0':{'A11':'smaller than 0 DM', 'A12':'bigger than 0 DM but smaller than
 #####function
 def process(data, mean_list, dict):
     data_tmp = []
-    prompt = "Analyze the background of customers for credit scoring and determine good or bad credit risks for the customer. Please respond with either good or bad."
+    prompt = 'Evaluate the creditworthiness of a customer with the following financial profile. Respond with either \'good\' or \'bad\'. For instance, \'The client has a stable income, no previous debts, and owns a property.\' should be classified as \'good\'. \n Text:'
     for j in range(len(data)):
         text = ''
-        for i in range(len(data[0]) - 2):
+        for i in range(len(data[0]) - 1):
             if str(i) not in list(dict.keys()):
                 text = text+ '. '+ 'The state of ' + mean_list[i] + ' is ' + str(data[j][i])
             else:
                 text = text+ '. '+ 'The state of ' + mean_list[i] + ' is ' + dict[str(i)][data[j][i]]
         answer = 'good' if data[j][-1] == 1 else 'bad'
-        data_tmp.append({'id':j, "query": prompt+text, 'answer': answer, "choices": ["good", "bad"], "gold": data[j][-1]-1, 'text':text})
+        data_tmp.append({'id':j, "query": prompt+text+'\n Answer:', 'answer': answer, "choices": ["good", "bad"], "gold": data[j][-1]-1, 'text':text})
     return data_tmp
 
 def json_save(data, dataname, mean_list= mean_list, dict= dict):
