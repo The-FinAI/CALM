@@ -64,7 +64,7 @@ res.columns = mean_list
 # df 为数据
 # label_names 作为目标的变量名
 # protected_attribute_names 需要保护的变量名，含偏见的变量名
-test_data = BinaryLabelDataset(favorable_label=1, unfavorable_label=2, df=test, label_names=['target'], protected_attribute_names=['Age in years','foreign worker'])
+test_data = BinaryLabelDataset(favorable_label=1, unfavorable_label=2, df=test, label_names=['target'], protected_attribute_names=['Personal status and sex','Age in years','foreign worker'])
 
 # unprivileged_groups 弱势群体，例如{gender：1}表示弱势群体是女性，list[]内可以叠加，也可以多次使用分开算
 # privileged_groups 优势群体，例如{gender：2}表示优势群体是男性，
@@ -72,6 +72,37 @@ metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'foreign work
 text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
+
+metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'Age in years':0}], privileged_groups=[{'Age in years':1}])
+text_res = MetricTextExplainer(metric)
+
+print('DI:', text_res.disparate_impact())
+
+metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'Personal status and sex':0}], privileged_groups=[{'Personal status and sex':1}])
+text_res = MetricTextExplainer(metric)
+
+print('DI:', text_res.disparate_impact())
+
+
+train_data = BinaryLabelDataset(favorable_label=1, unfavorable_label=2, df=train, label_names=['target'], protected_attribute_names=['Personal status and sex','Age in years','foreign worker'])
+
+# unprivileged_groups 弱势群体，例如{gender：1}表示弱势群体是女性，list[]内可以叠加，也可以多次使用分开算
+# privileged_groups 优势群体，例如{gender：2}表示优势群体是男性，
+metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'foreign worker':0}], privileged_groups=[{'foreign worker':1}])
+text_res = MetricTextExplainer(metric)
+
+print('DI:', text_res.disparate_impact())
+
+metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'Age in years':0}], privileged_groups=[{'Age in years':1}])
+text_res = MetricTextExplainer(metric)
+
+print('DI:', text_res.disparate_impact())
+
+metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'Personal status and sex':0}], privileged_groups=[{'Personal status and sex':1}])
+text_res = MetricTextExplainer(metric)
+
+print('DI:', text_res.disparate_impact())
+
 
 
 '''method bias test'''
@@ -81,7 +112,7 @@ print('DI:', text_res.disparate_impact())
 # df 为method输出的数据
 # label_names 作为目标的变量名
 # protected_attribute_names 需要保护的变量名，含偏见的变量名
-res_data = BinaryLabelDataset(favorable_label=1, unfavorable_label=2, df=res, label_names=['target'], protected_attribute_names=['Age in years','foreign worker'])
+res_data = BinaryLabelDataset(favorable_label=1, unfavorable_label=2, df=res, label_names=['target'], protected_attribute_names=['Personal status and sex','Age in years','foreign worker'])
 
 metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'foreign worker':0}], privileged_groups=[{'foreign worker':1}])
 text_res = MetricTextExplainer(metric)
@@ -89,7 +120,3 @@ text_res = MetricTextExplainer(metric)
 print('EOD:', text_res.equal_opportunity_difference())
 print('ERR:', text_res.error_rate())
 print('down')
-#
-# error_rate
-#
-# equal_opportunity_difference
