@@ -30,26 +30,16 @@ data = pd.read_csv(name, sep=' ', names=[i for i in range(feature_size)])
 # 原数据处理
 # data中所有数据需要修改成数值格式
 # todo age 和gender需要进一步划分成二分类？
-data = predo(data)
 
-random.seed(10086)
-
-# 原数据划分
-train_ind = random.sample([i for i in range(len(data))],int(len(data)*train_size))
-train_data = [data[i] for i in train_ind]
-
-index_left = list(filter(lambda x: x not in train_ind, [i for i in range(len(data))]))
-dev__ind = random.sample(index_left,int(len(data)*dev_size))
-dev_data = [data[i] for i in dev__ind]
-
-index_left = list(filter(lambda x: x not in train_ind + dev__ind, [i for i in range(len(data))]))
-test_data = [data[i] for i in index_left]
-
-test = pd.DataFrame(test_data)
-test.columns = mean_list # 表格重新写表头
-
+train_data = pd.read_csv('./bias_data/german_train.csv', sep=',', names=[i for i in range(feature_size)])
+train_data = predo(train_data)
 train = pd.DataFrame(train_data)
 train.columns = mean_list
+
+test_data = pd.read_csv('./bias_data/german_test.csv', sep=',', names=[i for i in range(feature_size)])
+test_data = predo(test_data)
+test = pd.DataFrame(test_data)
+test.columns = mean_list # 表格重新写表头
 
 # method结果读取
 # todo 标签需要转换适配各个数据集
@@ -104,7 +94,6 @@ text_res = MetricTextExplainer(metric)
 print('DI:', text_res.disparate_impact())
 
 
-
 '''method bias test'''
 # 测试模型偏见性
 # favorable_label 为好的数值，即无风险的代表数字
@@ -118,5 +107,18 @@ metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'foreig
 text_res = MetricTextExplainer(metric)
 
 print('EOD:', text_res.equal_opportunity_difference())
-print('ERR:', text_res.error_rate())
+print('ERR:', text_res.average_odds_difference())
+
+metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'Age in years':0}], privileged_groups=[{'Age in years':1}])
+text_res = MetricTextExplainer(metric)
+
+print('EOD:', text_res.equal_opportunity_difference())
+print('ERR:', text_res.average_odds_difference())
+
+metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'Personal status and sex':0}], privileged_groups=[{'Personal status and sex':1}])
+text_res = MetricTextExplainer(metric)
+
+print('EOD:', text_res.equal_opportunity_difference())
+print('ERR:', text_res.average_odds_difference())
+
 print('down')
