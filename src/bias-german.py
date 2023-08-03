@@ -63,12 +63,12 @@ text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
 
-metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'Age in years':0}], privileged_groups=[{'Age in years':1}])
+metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'Age in years':1}], privileged_groups=[{'Age in years':0}])
 text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
 
-metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'Personal status and sex':0}], privileged_groups=[{'Personal status and sex':1}])
+metric = BinaryLabelDatasetMetric(test_data, unprivileged_groups=[{'Personal status and sex':1}], privileged_groups=[{'Personal status and sex':0}])
 text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
@@ -83,12 +83,12 @@ text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
 
-metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'Age in years':0}], privileged_groups=[{'Age in years':1}])
+metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'Age in years':1}], privileged_groups=[{'Age in years':0}])
 text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
 
-metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'Personal status and sex':0}], privileged_groups=[{'Personal status and sex':1}])
+metric = BinaryLabelDatasetMetric(train_data, unprivileged_groups=[{'Personal status and sex':1}], privileged_groups=[{'Personal status and sex':0}])
 text_res = MetricTextExplainer(metric)
 
 print('DI:', text_res.disparate_impact())
@@ -109,13 +109,13 @@ text_res = MetricTextExplainer(metric)
 print('EOD:', text_res.equal_opportunity_difference())
 print('ERR:', text_res.average_odds_difference())
 
-metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'Age in years':0}], privileged_groups=[{'Age in years':1}])
+metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'Age in years':1}], privileged_groups=[{'Age in years':0}])
 text_res = MetricTextExplainer(metric)
 
 print('EOD:', text_res.equal_opportunity_difference())
 print('ERR:', text_res.average_odds_difference())
 
-metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'Personal status and sex':0}], privileged_groups=[{'Personal status and sex':1}])
+metric = ClassificationMetric(test_data, res_data, unprivileged_groups=[{'Personal status and sex':1}], privileged_groups=[{'Personal status and sex':0}])
 text_res = MetricTextExplainer(metric)
 
 print('EOD:', text_res.equal_opportunity_difference())
