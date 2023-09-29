@@ -7,21 +7,22 @@
     <a href='https://jimin.chancefocus.com/' target='_blank'>Jimin Huang<sup>2</sup></a>&emsp;
     <a target='_blank'>Yifang Zhang<sup>1</sup></a>&emsp;
     <a target='_blank'>Qianqian Xie<sup>3</sup></a>&emsp;
-    <a target='_blank'>Weiguang Han<sup>4</sup></a>&emsp;
+    <a target='_blank'>Weiguang Han<sup>3</sup></a>&emsp;
+    <a href='https://warrington.ufl.edu/directory/person/12693/' target='_blank'>Alejandro Lopez-Lira<sup>4</sup></a>&emsp;
     <a target='_blank'>Hao Wang*<sup>1</sup></a>
 </div>
 <div>
 <div align="left">
     <sup>1</sup>Sichuan University&emsp;
     <sup>2</sup>ChanceFocus AMC&emsp;
-    <sup>3</sup>Yale University&emsp;
-    <sup>4</sup>Wuhan University&emsp;
+    <sup>3</sup>Wuhan University&emsp;
+    <sup>4</sup>University of Florida
 </div>
 <div align="left">
     <img src='https://i.postimg.cc/NjKhDkGY/DFAF986-CCD6529-E52-D7830-F180-D-C37-C7-DEE-4340.png' alt='Sichuan University Logo' height='100px'>&emsp;
     <img src='https://i.postimg.cc/xTsgsrqN/logo11.png' alt='ChanceFocus AMC Logo' height='100px'>&emsp;
-    <img src='https://i.postimg.cc/1XBsYsmJ/OIP.jpg' alt='Yale university' height='100px'>&emsp;
-    <img src='https://i.postimg.cc/CLtkBwz7/57-EDDD9-FB0-DF712-F3-AB627163-C2-1-EF15655-13-FCA.png' alt='Wuhan University Logo' height='100px'>
+    <img src='https://i.postimg.cc/CLtkBwz7/57-EDDD9-FB0-DF712-F3-AB627163-C2-1-EF15655-13-FCA.png' alt='Wuhan University Logo' height='100px'>&emsp;
+     <img src='https://i.postimg.cc/XY1s2RHD/University-of-Florida-Logo-1536x864.jpg' alt='University of Florida Logo' height='100px'>
 </div>
 
 
@@ -76,7 +77,7 @@ All of these original datasets are open-source, which have been widely used and 
 ### Data Construction
 In the data construction, we detail how we construct various instruction-tuning forms tailored to different datasets.
 
-![Image](./prompt.png)
+<div align="center"> <img src="./prompt.png" width = 800 /> </div>
 
 Due to the unique nature of some datasets (many features or meaning-
 less symbols), we create two different forms of instructions as table-based and description-based, to evaluate the LLMs. 
@@ -103,19 +104,20 @@ We choose the latest and most popular LLMs as the baselines, including open reso
 ## Bias Analysis
 We explore bias in three datasets using three LLMs (ChatGPT, GPT-4, and our model) that have the processing ability of the tasks. We consider the impact of gender, age, and foreign status on German, the impact of gender on ccFraud, and the impact of age on Travel Insurance. We set the old, female and foreigner as the unprivileged groups for gender, age, and foreign status, respectively. Except the 'foreigner' in German, the DI values are near 1, indicating that the original datasets are unbiased on these sensitive features.
 
-![Image](./bias1.png)
+<div align="center"> <img src="./bias1.png" width = 300 /> </div>
 
 After the prediction of the LLMs,  we compute the EOD and AOD on these features. 
 For ChatGPT and GPT-4, it indicates that they have bias in some special cases. For example, GPT-4 is more likely to give females wrong predictions (AOD is -0.273) on ccFraud dataset and prefer foreign workers on German dataset (EOD is 0.289), even though the original data is unbiased (DI closes to 1); on the German dataset, ChatGPT prefers to lend money to older people (EOD is 0.137). It's also interesting to note that the potential biases exist in both ChatGPT and GPT-4 are not completely consistent with each other ('gender' and 'age' in German, and 'gender' in ccFraud). 
 
-![Image](./bias2.png)
+<div align="center"> <img src="./bias2.png" width = 400 /> </div>
+
 
 ## Acknowledgements
 This project is built upon the following open-source projects, and we really thanks for them:
 
 - [**Llama 2**](https://github.com/facebookresearch/llama)
 - [**PIXIU**](https://github.com/chancefocus/PIXIU)
-- [**BELLE**](https://github.com/LianjiaTech/BELLE)
+- [**LLMindCraft**](https://github.com/XplainMind/LLMindCraft)
 
 ## Disclaimer
 This project are provided for **academic and educational purposes** only. We do not take responsibility for any issues, risks, or adverse consequences that may arise from the use of this project.
