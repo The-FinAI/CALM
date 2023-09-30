@@ -130,4 +130,4 @@ If our project has been helpful for your work, please cite as follows:
 ```
 
 ## License
-CALM is licensed under [MIT]. For more details, please see the [MIT](xxx) file.
+CALM is licensed under [MIT]. For more details, please see the [MIT](./LICENSE) file.
