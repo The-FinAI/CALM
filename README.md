@@ -37,7 +37,7 @@ We will open the following parts in this project:
 
 ## News
 
-**[2023/10/xxx]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](xxx) and [paper](xxx).
+**[2023/10/xxx]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](./data) and [paper](xxx).
 
 ## Contents
 
