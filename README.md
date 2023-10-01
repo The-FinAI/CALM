@@ -54,11 +54,11 @@ We will open the following parts in this project:
 ## Introduction
 Credit and risk assessment is a series of unique tasks in the financial industry, which play a significant role in various aspects of individuals and society . It evaluates the creditworthiness and risk situation of individuals, businesses, and even countries. The assessment includes tasks such as credit scoring, fraud detection, financial distress identification, and claim analysis. These tasks cover most aspects of our personal lives and social development, such as lending, insurance, and investment, which have a huge financial impact for the whole of society. Meanwhile, it is essential to note that data used for credit and risk assessment may collect some sensitive information such as gender and age. This may further lead to discrimination against certain groups. Therefore, in credit and risk assessment, the potential biases should be aware of to avoid negative social consequences.
 
-Currently, LLMs' potential in financial natural language processing (NLP) tasks is significantly emphasized. Some studies explore the ability of the LLMs to improve quantitative stock trading strategies, predict stock market returns, and analyze investment context . This further raises the question of whether LLMs will have sufficient capabilities if used for Credit and risk assessment and if it may bring some bias problem. 
+Currently, LLMs' potential in financial natural language processing (NLP) tasks is significantly emphasized. Some studies explore the ability of the LLMs to improve quantitative stock trading strategies, predict stock market returns, and analyze investment context. This further raises the question of whether LLMs will have sufficient capabilities if used for credit and risk assessment or if it may bring some bias. 
 
-We constructed the first comprehensive **benchmark** and **instrcuction datasets** with 70K data samples. We amalgamated an extensive array of 9 existing public datasets on 4 tasks, including credit scoring, fraud detection, financial distress identification, and claim analysis. It includes data that is meaningless, imbalanced, and high-dimensional. 
+We constructed the first comprehensive **benchmark** and **instruction datasets** with 70K data samples. We amalgamated an extensive array of 9 existing public datasets on 4 tasks, including credit scoring, fraud detection, financial distress identification, and claim analysis. It includes data that is meaningless, imbalanced, and high-dimensional. 
 
-We fine-tune our Credit and risk Assessment LLM (**CALM**) based on Llama2-chat with the instructions.
+We fine-tune our Credit and Risk Assessment LLM (**CALM**) based on Llama2-chat with the instructions.
 
 We also identify the inherent **biases** within the models.
 
@@ -70,7 +70,7 @@ we classify it into four classes of tasks: credit scoring, fraud detection, fina
 We finally collect nine datasets for these tasks, including three credit scoring datasets, two fraud detection datasets, two financial distress identification datasets, and two claim analysis datasets. 
 Among them, three original datasets (Australia, Credit Card Fraud, PortoSeguro) have been processed into meaningless symbols. 
 For those datasets with a large amount, we sample them based on the label distribution for our data collection.
-All of these original datasets are open-source, which have been widely used and validated by the existing works.
+All of these original datasets are open-source and have been widely used and validated by the existing works.
 
 ![Image](./data.png)
 
@@ -80,7 +80,7 @@ In the data construction, we detail how we construct various instruction-tuning 
 <div align="center"> <img src="./prompt.png" width = 800 /> </div>
 
 Due to the unique nature of some datasets (many features or meaning-
-less symbols), we create two different forms of instructions as table-based and description-based, to evaluate the LLMs. 
+less symbols), we create two different forms of instructions table-based and description-based, to evaluate the LLMs. 
 Both forms of instruction first follow a similar template. For instance, [prompt] is a prompt created for each data, [input] expresses a single data from the original datasets, [output] is the corresponding correct label for the [input], [choices] are the available label options (such as ["Yes", "No"] or ["good", "bad"]), and [index] is the index of the correct label in the label set. Therefore, the differences between the two instructions come from the specific construction of [prompt] and [input].
 
 **Table-based Instruction.**
@@ -96,7 +96,7 @@ Here, we use natural language in [input] to re-explain the meaning of features a
 The code is being collated
 
 ## Credit and Risk Assessment Benchmark
-We choose the latest and most popular LLMs as the baselines, including open resources and non-open resources. For the open resource LLMs, we use 6 LLMs, Bloomz , Vicuna , Llama1, Llama2, Llama2-chat and Chatglm2. To ensure fairness and minimize computation costs, we use the around 7B-parameters version for all these LLMs. For the non-open resource LLMs, we use ChatGPT and GPT-4. In addition, We have also included a comparison of the results from the SOTA expert system models on various datasets.
+We choose the latest and most popular LLMs as the baselines, including open resources and non-open resources. For the open resource LLMs, we use 6 LLMs, Bloomz, Vicuna, Llama1, Llama2, Llama2-chat, and Chatglm2. To ensure fairness and minimize computation costs, we use the around 7B-parameters version for all these LLMs. For the non-open resource LLMs, we use ChatGPT and GPT-4. In addition, We have also included a comparison of the results from the SOTA expert system models on various datasets.
 
 ### Evaluation Data
 Credit Scoring 
@@ -121,25 +121,25 @@ Claim Analysis
 ![Image](./res.png)
 
 ## Bias Analysis
-We explore bias in three datasets using three LLMs (ChatGPT, GPT-4, and our model) that have the processing ability of the tasks. We consider the impact of gender, age, and foreign status on German, the impact of gender on ccFraud, and the impact of age on Travel Insurance. We set the old, female and foreigner as the unprivileged groups for gender, age, and foreign status, respectively. Except the 'foreigner' in German, the DI values are near 1, indicating that the original datasets are unbiased on these sensitive features.
+We explore bias in three datasets using three LLMs (ChatGPT, GPT-4, and our model) that have the processing ability of the tasks. We consider the impact of gender, age, and foreign status on German, the impact of gender on ccFraud, and the impact of age on Travel Insurance. We set the old, female and foreigner as the unprivileged groups for gender, age, and foreign status, respectively. Except for the 'foreigner' in German, the DI values are near 1, indicating that the original datasets are unbiased on these sensitive features.
 
 <div align="center"> <img src="./bias1.png" width = 300 /> </div>
 
 After the prediction of the LLMs,  we compute the EOD and AOD on these features. 
-For ChatGPT and GPT-4, it indicates that they have bias in some special cases. For example, GPT-4 is more likely to give females wrong predictions (AOD is -0.273) on ccFraud dataset and prefer foreign workers on German dataset (EOD is 0.289), even though the original data is unbiased (DI closes to 1); on the German dataset, ChatGPT prefers to lend money to older people (EOD is 0.137). It's also interesting to note that the potential biases exist in both ChatGPT and GPT-4 are not completely consistent with each other ('gender' and 'age' in German, and 'gender' in ccFraud). 
+For ChatGPT and GPT-4, it indicates that they have a bias in some special cases. For example, GPT-4 is more likely to give females wrong predictions (AOD is -0.273) on the ccFraud dataset and prefer foreign workers on the German dataset (EOD is 0.289), even though the original data is unbiased (DI close to 1); on the German dataset, ChatGPT prefers to lend money to older people (EOD is 0.137). It's also interesting to note that the potential biases that exist in both ChatGPT and GPT-4 are not completely consistent with each other ('gender' and 'age' in German, and 'gender' in ccFraud). 
 
 <div align="center"> <img src="./bias2.png" width = 400 /> </div>
 
 
 ## Acknowledgements
-This project is built upon the following open-source projects, and we really thanks for them:
+This project is built upon the following open-source projects, and we are really thankful for them:
 
 - [**Llama 2**](https://github.com/facebookresearch/llama)
 - [**PIXIU**](https://github.com/chancefocus/PIXIU)
 - [**LLMindCraft**](https://github.com/XplainMind/LLMindCraft)
 
 ## Disclaimer
-This project are provided for **academic and educational purposes** only. We do not take responsibility for any issues, risks, or adverse consequences that may arise from the use of this project.
+This project is provided for **academic and educational purposes** only. We do not take responsibility for any issues, risks, or adverse consequences that may arise from the use of this project.
 
 ## Citation
 If our project has been helpful for your work, please cite as follows:
