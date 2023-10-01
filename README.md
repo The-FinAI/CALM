@@ -29,15 +29,15 @@
 Our project **CALM** aims to better utilize large language models (LLMs) to study issues related to credit and risk assessment in the financial industry, including data construction, model training, model evaluation, and bias analysis. 
 
 We will open the following parts in this project:
-* Credit and Risk Assessment Instruction Dataset
-* Credit and Risk Assessment Benchmark 
-* Credit and Risk Assessment LLM Bias Analysis
+* [Credit and Risk Assessment Instruction Dataset](./data)
+* [Credit and Risk Assessment Benchmark](#credit-and-risk-assessment-benchmark)
+* [Credit and Risk Assessment LLM Bias Analysis](./src/bias)
 * **C**redit and Risk **A**ssessment **L**arge Language **M**odel (CALM 7B, COMING SOON)
 * [Our Paper "Empowering Many, Biasing a Few: Generalist Credit Scoring through Large Language Models"](xxx)
 
 ## News
 
-**[2023/10/xxx]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](./data) and [paper](xxx).
+**[2023/10/01]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](./data), [Benchmark](#credit-and-risk-assessment-benchmark), [Bias Analysis](./src/bias) and [paper](xxx).
 
 ## Contents
 
@@ -97,6 +97,25 @@ The code is being collated
 
 ## Credit and Risk Assessment Benchmark
 We choose the latest and most popular LLMs as the baselines, including open resources and non-open resources. For the open resource LLMs, we use 6 LLMs, Bloomz , Vicuna , Llama1, Llama2, Llama2-chat and Chatglm2. To ensure fairness and minimize computation costs, we use the around 7B-parameters version for all these LLMs. For the non-open resource LLMs, we use ChatGPT and GPT-4. In addition, We have also included a comparison of the results from the SOTA expert system models on various datasets.
+
+### Evaluation Data
+Credit Scoring 
+- [German](xxx)
+- [Australia](xxx)
+- [Lending Club](xxx)
+  
+Fraud Detection 
+- [Credit Card Fraud](xxx)
+- [ccFraud](xxx)  
+
+Financial Distress Identification 
+- [Polish](xxx)
+- [Taiwan Economic Journal](xxx)
+
+Claim Analysis
+- [PortoSeguro](xxx)
+- [Travel Insurance](xxx)
+
 
 ### Evaluation Results
 ![Image](./res.png)
