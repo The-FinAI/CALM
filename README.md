@@ -100,21 +100,21 @@ We choose the latest and most popular LLMs as the baselines, including open reso
 
 ### Evaluation Data
 Credit Scoring 
-- [German](xxx)
-- [Australia](xxx)
-- [Lending Club](xxx)
+- [German](https://huggingface.co/datasets/daishen/cra-german)
+- [Australia](https://huggingface.co/datasets/daishen/cra-australian)
+- [Lending Club](https://huggingface.co/datasets/daishen/cra-lendingclub)
   
 Fraud Detection 
-- [Credit Card Fraud](xxx)
-- [ccFraud](xxx)  
+- [Credit Card Fraud](https://huggingface.co/datasets/daishen/cra-ccf)
+- [ccFraud](https://huggingface.co/datasets/daishen/cra-ccfraud)
 
 Financial Distress Identification 
-- [Polish](xxx)
-- [Taiwan Economic Journal](xxx)
+- [Polish](https://huggingface.co/datasets/daishen/cra-ccfraud)
+- [Taiwan Economic Journal](https://huggingface.co/datasets/daishen/cra-taiwan)
 
 Claim Analysis
-- [PortoSeguro](xxx)
-- [Travel Insurance](xxx)
+- [PortoSeguro](https://huggingface.co/datasets/daishen/cra-portoseguro)
+- [Travel Insurance](https://huggingface.co/datasets/daishen/cra-travelinsurace)
 
 
 ### Evaluation Results
