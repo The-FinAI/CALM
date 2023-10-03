@@ -33,11 +33,11 @@ We will open the following parts in this project:
 * [Credit and Risk Assessment Benchmark](#credit-and-risk-assessment-benchmark)
 * [Credit and Risk Assessment LLM Bias Analysis](./src/bias)
 * **C**redit and Risk **A**ssessment **L**arge Language **M**odel (CALM 7B, COMING SOON)
-* [Our Paper "Empowering Many, Biasing a Few: Generalist Credit Scoring through Large Language Models"](xxx)
+* [Our Paper "Empowering Many, Biasing a Few: Generalist Credit Scoring through Large Language Models"](https://arxiv.org/abs/2310.00566)
 
 ## News
 
-**[2023/10/01]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](./data), [Benchmark](#credit-and-risk-assessment-benchmark), [Bias Analysis](./src/bias) and [paper](xxx).
+**[2023/10/01]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](./data), [Benchmark](#credit-and-risk-assessment-benchmark), [Bias Analysis](./src/bias) and [paper](https://arxiv.org/abs/2310.00566).
 
 ## Contents
 
@@ -144,7 +144,13 @@ This project is provided for **academic and educational purposes** only. We do n
 ## Citation
 If our project has been helpful for your work, please cite as follows:
 ```
-@misc{xxx
+@misc{feng2023empowering,
+      title={Empowering Many, Biasing a Few: Generalist Credit Scoring through Large Language Models}, 
+      author={Duanyu Feng and Yongfu Dai and Jimin Huang and Yifang Zhang and Qianqian Xie and Weiguang Han and Alejandro Lopez-Lira and Hao Wang},
+      year={2023},
+      eprint={2310.00566},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
 }
 ```
 
