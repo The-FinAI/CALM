@@ -74,6 +74,8 @@ All of these original datasets are open-source and have been widely used and val
 
 ![Image](./data.png)
 
+**For more detail, see Our Paper** ["Empowering Many, Biasing a Few: Generalist Credit Scoring through Large Language Models"](https://arxiv.org/abs/2310.00566).
+
 ### Data Construction
 In the data construction, we detail how we construct various instruction-tuning forms tailored to different datasets.
 
