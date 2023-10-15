@@ -32,10 +32,11 @@ We will open the following parts in this project:
 * [Credit and Risk Assessment Instruction Dataset](./data)
 * [Credit and Risk Assessment Benchmark](#credit-and-risk-assessment-benchmark)
 * [Credit and Risk Assessment LLM Bias Analysis](./src/bias)
-* **C**redit and Risk **A**ssessment **L**arge Language **M**odel (CALM 7B, COMING SOON)
+* [**C**redit and Risk **A**ssessment **L**arge Language **M**odel (CALM-7B)](https://huggingface.co/daishen/CALM-7B)
 * [Our Paper "Empowering Many, Biasing a Few: Generalist Credit Scoring through Large Language Models"](https://arxiv.org/abs/2310.00566)
 
 ## News
+**[2023/10/15]** Our [Credit and Risk Assessment Large Language Model (CALM-7B)](https://huggingface.co/daishen/CALM-7B) has been officially released
 
 **[2023/10/01]** CALM v1.0 has been officially released, open-sourcing the [Instruction Dataset](./data), [Benchmark](#credit-and-risk-assessment-benchmark), [Bias Analysis](./src/bias) and [paper](https://arxiv.org/abs/2310.00566).
 
@@ -95,7 +96,12 @@ This form of instruction is designed for the rest datasets that have clear seman
 Here, we use natural language in [input] to re-explain the meaning of features and the corresponding numerical values for each data. For instance, in credit scoring, we transfer the features as ``The purpose is car (new). The state of credit amount is 2366." This form makes LLMs easier to understand the data.
 
 ## Fine-tuning and Inference
-The code is being collated
+We further build our **C**redit and Risk **A**ssessment **L**arge Language **M**odel (CALM-7B) by fine-tuning the Llama2-chat, with the above instruction dataset. Except for the Lending Club, Polish, and PortoSeguro datasets, we leave them to test the LLM's ability on similar tasks.
+
+On some extremely imbalanced datasets, including Credit Card Fraud, ccFraud, Taiwan Economic Journal and Travel Insurance, we resample the minority class on the training set. After resampling, the ratio of majority class samples to minority class samples was 2:1.
+
+The code of fine-tuning our LLM (CALM-7B) can be found in [CALM-train](https://github.com/Dai-shen/CALM-train).
+
 
 ## Credit and Risk Assessment Benchmark
 We choose the latest and most popular LLMs as the baselines, including open resources and non-open resources. For the open resource LLMs, we use 6 LLMs, Bloomz, Vicuna, Llama1, Llama2, Llama2-chat, and Chatglm2. To ensure fairness and minimize computation costs, we use the around 7B-parameters version for all these LLMs. For the non-open resource LLMs, we use ChatGPT and GPT-4. In addition, We have also included a comparison of the results from the SOTA expert system models on various datasets.
